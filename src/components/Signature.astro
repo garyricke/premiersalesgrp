@@ -1,0 +1,32 @@
+---
+/**
+ * Jason Foley's handwritten signature.
+ * Inlined from the source SVG so it stays crisp and recolors via currentColor.
+ */
+import sigRaw from '../../assets/JasonFoley-sig-white.svg?raw';
+
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<span class={`sig ${className}`} role="img" aria-label="Jason Foley signature" set:html={sigRaw}></span>
+
+<style>
+  .sig {
+    display: inline-block;
+    width: clamp(190px, 30vw, 250px);
+    color: var(--bone);
+    line-height: 0;
+  }
+  .sig :global(svg) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  /* CSS overrides the SVG's hard-coded fill so it follows `color`. */
+  .sig :global(path) {
+    fill: currentColor;
+  }
+</style>
