@@ -62,6 +62,20 @@ npm run preview    # serve the production build
 4. **Domain:** point `premiersalesgrp.com` at the Netlify site.
 5. **Env:** no build-time secrets are required (Cloudinary URLs are public delivery URLs).
 
+## Private preview (password gate)
+
+The site is gated behind HTTP Basic Auth via a Netlify Edge Function
+(`netlify/edge-functions/auth.js`) — it runs server-side on every request, so
+page source isn't viewable until you're in.
+
+- **Login:** any username · password `imwired`
+- Override the password in **Netlify → Site settings → Environment variables**
+  as `SITE_PASSWORD` (keeps the real password out of this public repo).
+- The gate only applies on Netlify (not `astro dev`). To test locally:
+  `npx netlify dev`.
+- **At launch:** delete `netlify/edge-functions/auth.js` to make the site public.
+  (The gate also blocks the contact form, so remove it before going live.)
+
 ## TODO before launch
 
 - [ ] Replace `PERSON.linkedin` in `src/consts.ts` with Jason's real LinkedIn URL.
