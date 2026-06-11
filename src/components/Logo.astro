@@ -1,0 +1,59 @@
+---
+/**
+ * Premier Sales Group primary logo lockup.
+ * Mark = layered ascending "peak" of conductor strands (premier / signal / cable).
+ * Hand-built SVG so it stays crisp at any size and is independent of AI raster art.
+ */
+interface Props {
+  variant?: 'full' | 'mark';
+  class?: string;
+  markOnly?: boolean;
+}
+const { variant = 'full', class: className = '' } = Astro.props;
+---
+
+<a href="/" class={`logo ${className}`} aria-label="Premier Sales Group — home">
+  <svg class="logo__mark" viewBox="0 0 48 48" role="img" aria-hidden="true" focusable="false">
+    <path d="M5 35 L24 11 L43 35" fill="none" stroke="var(--copper)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M13 37 L24 23 L35 37" fill="none" stroke="var(--copper-bright)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85" />
+    <circle cx="24" cy="40.5" r="2.4" fill="var(--copper-bright)" />
+  </svg>
+  {variant === 'full' && (
+    <span class="logo__type">
+      <span class="logo__name">Premier Sales Group</span>
+      <span class="logo__sub">Wire &amp; Cable Representation</span>
+    </span>
+  )}
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .logo__mark {
+    width: 2.3rem;
+    height: 2.3rem;
+    flex: none;
+    transition: transform 0.4s var(--ease);
+  }
+  .logo:hover .logo__mark { transform: translateY(-2px); }
+  .logo__type { display: flex; flex-direction: column; line-height: 1; }
+  .logo__name {
+    font-family: var(--font-grotesk);
+    font-weight: 700;
+    font-size: 1.02rem;
+    letter-spacing: 0.01em;
+    color: var(--bone);
+    text-transform: none;
+  }
+  .logo__sub {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--copper-bright);
+    margin-top: 0.32rem;
+  }
+</style>

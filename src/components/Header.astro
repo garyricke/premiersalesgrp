@@ -1,0 +1,113 @@
+---
+import Logo from './Logo.astro';
+import { NAV, PERSON } from '../consts';
+---
+
+<header class="hdr" id="site-header">
+  <div class="wrap hdr__inner">
+    <Logo />
+    <nav class="hdr__nav" aria-label="Primary">
+      <ul>
+        {NAV.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+      <a href="/#contact" class="btn hdr__cta">Request a Quote</a>
+    </nav>
+    <button class="hdr__toggle" aria-expanded="false" aria-controls="m-nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="hdr__mobile" id="m-nav" aria-label="Mobile" hidden>
+    <ul>
+      {NAV.map((item) => (<li><a href={item.href}>{item.label}</a></li>))}
+      <li><a href={`tel:${PERSON.phone}`} class="text-copper">{PERSON.phoneDisplay}</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--charcoal) 82%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+  }
+  .hdr.scrolled { border-bottom-color: var(--line); background: color-mix(in srgb, var(--charcoal) 94%, transparent); }
+  .hdr__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .hdr__nav { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2.2rem); }
+  .hdr__nav ul { display: flex; gap: clamp(1rem, 2.4vw, 2.1rem); }
+  .hdr__nav a {
+    font-family: var(--font-grotesk);
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    position: relative;
+    padding-block: 0.4rem;
+    transition: color 0.25s var(--ease);
+  }
+  .hdr__nav ul a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%; height: 1px;
+    background: var(--copper);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s var(--ease);
+  }
+  .hdr__nav ul a:hover { color: var(--bone); }
+  .hdr__nav ul a:hover::after { transform: scaleX(1); }
+  .hdr__cta { padding: 0.7em 1.2em; }
+
+  .hdr__toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; padding: 0.5rem; }
+  .hdr__toggle span { width: 26px; height: 2px; background: var(--bone); transition: transform 0.3s var(--ease), opacity 0.3s var(--ease); }
+  .hdr__toggle[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hdr__toggle[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+  .hdr__toggle[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .hdr__mobile { border-top: 1px solid var(--line); background: var(--charcoal-2); }
+  .hdr__mobile ul { display: flex; flex-direction: column; padding: 1rem var(--gutter) 1.5rem; }
+  .hdr__mobile a {
+    display: block;
+    font-family: var(--font-grotesk);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  @media (max-width: 820px) {
+    .hdr__nav { display: none; }
+    .hdr__toggle { display: flex; }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = header?.querySelector('.hdr__toggle');
+  const mobile = document.getElementById('m-nav');
+
+  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    if (mobile) mobile.hidden = open;
+  });
+  mobile?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      if (mobile) mobile.hidden = true;
+    })
+  );
+</script>

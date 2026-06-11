@@ -1,0 +1,171 @@
+---
+import Base from '../layouts/Base.astro';
+import { MEDIA, cld } from '../consts';
+
+const concepts = [
+  {
+    n: '01',
+    name: 'The Ascending Peak',
+    status: 'Recommended · Live',
+    img: cld(MEDIA.logoPeak, 'w_900', 'png'),
+    alt: 'Premier Sales Group peak logo concept — twisted copper strands forming an upward chevron with wordmark.',
+    idea: 'Two layered conductor strokes climb to a single peak.',
+    why: 'Three meanings in one mark: “Premier” (the summit), a rising signal (growth and momentum), and stranded cable (the product). It’s the most ownable and the easiest to render crisply at any size — which is why it became the working brand mark, hand-built as clean SVG.',
+    best: 'Primary identity, favicon, signage, print.',
+    engine: 'OpenAI gpt-image-2 → refined to vector',
+  },
+  {
+    n: '02',
+    name: 'The Conductor Monogram',
+    status: 'Strong alternate',
+    img: cld(MEDIA.logoMonogram, 'w_900'),
+    alt: 'Premier Sales Group monogram logo concept — letters P S G routed as interlocking copper conductor lines.',
+    idea: '“PSG” drawn as one continuous conductor path.',
+    why: 'The initials are routed like a wiring diagram — letters that connect and hand off to each other, mirroring what a rep does between manufacturer and buyer. Compact, confident, and great as a standalone stamp where the full name isn’t needed.',
+    best: 'App icon, embroidery, lapel pin, social avatar.',
+    engine: 'Gemini 3 Pro (Nano Banana)',
+  },
+  {
+    n: '03',
+    name: 'The Woven Link',
+    status: 'Emblem direction',
+    img: cld(MEDIA.logoLink, 'c_crop,g_north,ar_16:10,w_900'),
+    alt: 'Premier Sales Group emblem logo concept — two copper strands twisting into a circular woven link.',
+    idea: 'Two strands twist into a single circular link.',
+    why: 'A literal picture of the value proposition — the representative as the trusted link that ties two parties together. The roundel reads as a seal of quality and works beautifully foil-stamped or debossed. More decorative, so reserved for badges and premium touchpoints.',
+    best: 'Quality seal, packaging, certificate, watermark.',
+    engine: 'Gemini 3 Pro (Nano Banana)',
+  },
+];
+---
+
+<Base
+  title="Logo Concepts"
+  description="Four logo directions explored for Premier Sales Group — the ascending peak, the conductor monogram, the woven link, and a type-led nameplate — with the thinking behind each."
+  path="/logo-concepts"
+>
+  <section class="section lc-hero">
+    <div class="wrap">
+      <p class="eyebrow">Logo Concepts</p>
+      <h1 class="lc-title">Four marks. One job:<br /><span class="serif-accent text-copper">make Jason look like the real deal.</span></h1>
+      <p class="lc-lede">
+        Each direction below was generated and explored with AI image models (Gemini 3 Pro
+        and OpenAI gpt-image-2), then judged against the bar that matters for a rep firm:
+        ownable, premium, and unmistakable at a glance. Here’s the thinking behind each.
+      </p>
+    </div>
+  </section>
+
+  <section class="section--line">
+    <div class="wrap lc-list">
+      {concepts.map((c) => (
+        <article class={`lc ${c.n === '01' ? 'lc--lead' : ''}`}>
+          <div class="lc__media">
+            <img src={c.img} alt={c.alt} width="900" height="720" loading="lazy" />
+          </div>
+          <div class="lc__body">
+            <div class="lc__top">
+              <span class="lc__n mono">{c.n}</span>
+              <span class={`tag ${c.n === '01' ? 'tag--live' : ''}`}>{c.status}</span>
+            </div>
+            <h2 class="lc__name">{c.name}</h2>
+            <p class="lc__idea">{c.idea}</p>
+            <p class="lc__why">{c.why}</p>
+            <dl class="lc__meta">
+              <div><dt>Best for</dt><dd>{c.best}</dd></div>
+              <div><dt>Generated with</dt><dd>{c.engine}</dd></div>
+            </dl>
+          </div>
+        </article>
+      ))}
+
+      <!-- Type-led concept, hand-built (no AI) -->
+      <article class="lc lc--type">
+        <div class="lc__media lc__media--plate">
+          <div class="nameplate">
+            <span class="nameplate__rule"></span>
+            <span class="nameplate__name">PREMIER</span>
+            <span class="nameplate__name nameplate__name--alt">SALES GROUP</span>
+            <span class="nameplate__sub mono">WIRE &amp; CABLE · EST. 2026</span>
+          </div>
+        </div>
+        <div class="lc__body">
+          <div class="lc__top">
+            <span class="lc__n mono">04</span>
+            <span class="tag">Type-led option</span>
+          </div>
+          <h2 class="lc__name">The Nameplate</h2>
+          <p class="lc__idea">No symbol — just the name, set with conviction.</p>
+          <p class="lc__why">
+            Jason described wanting a “today’s business card.” This direction answers that
+            literally: a pure typographic lockup in Archivo with a copper rule, like a
+            stamped industrial plate. It’s the safest, most flexible option and reads as
+            established instantly — no icon to explain. Hand-set in type, so it’s razor sharp
+            everywhere.
+          </p>
+          <dl class="lc__meta">
+            <div><dt>Best for</dt><dd>Email signature, letterhead, minimalist headers.</dd></div>
+            <div><dt>Built with</dt><dd>Pure typography (no AI)</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="wrap rec">
+      <p class="eyebrow">The Recommendation</p>
+      <h2 class="rec__h">Lead with the Peak. Keep the Monogram in your pocket.</h2>
+      <p class="rec__p">
+        The <strong>Ascending Peak</strong> is the primary identity across this site — it’s
+        the most distinctive and the most meaningful. The <strong>Conductor Monogram</strong>
+        is the perfect companion for tight spaces (avatars, pins, app icons). Together they
+        give Premier Sales Group a full, professional system from day one. Easy to change —
+        nothing is locked until you say so.
+      </p>
+      <a href="/#contact" class="btn">Tell me which you like</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .lc-hero { padding-top: clamp(3rem, 8vw, 6rem); }
+  .lc-title { font-size: var(--step-4); margin: 1.4rem 0; font-weight: 400; }
+  .lc-lede { max-width: 62ch; color: var(--text-dim); font-size: var(--step-1); }
+
+  .lc-list { display: flex; flex-direction: column; gap: clamp(2rem, 5vw, 4rem); }
+  .lc { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+  .lc:nth-child(even) .lc__media { order: 2; }
+  .lc__media { border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: #0f0f11; aspect-ratio: 5 / 4; display: grid; place-items: center; }
+  .lc__media img { width: 100%; height: 100%; object-fit: cover; }
+  .lc--lead .lc__media { box-shadow: 0 0 0 1px var(--copper), 0 30px 70px -40px rgba(200,119,46,0.7); border-color: var(--copper); }
+
+  .lc__top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .lc__n { font-size: 1rem; color: var(--copper); }
+  .tag--live { background: var(--copper); color: var(--ink); border-color: var(--copper); }
+  .lc__name { font-size: var(--step-2); }
+  .lc__idea { font-family: var(--font-display); font-style: italic; font-size: var(--step-1); color: var(--copper-bright); margin: 0.8rem 0 1rem; }
+  .lc__why { color: var(--text-dim); }
+  .lc__meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+  .lc__meta dt { font-family: var(--font-grotesk); font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.68rem; color: var(--text-mute); margin-bottom: 0.4rem; }
+  .lc__meta dd { color: var(--text); font-size: 0.92rem; }
+
+  /* Nameplate (type concept) */
+  .lc__media--plate { background: linear-gradient(135deg, #131315, #1d1d20); }
+  .nameplate { text-align: center; padding: 2rem; }
+  .nameplate__rule { display: block; width: 60px; height: 3px; background: var(--copper); margin: 0 auto 1.4rem; }
+  .nameplate__name { display: block; font-family: var(--font-grotesk); font-weight: 800; font-size: clamp(1.6rem, 5vw, 2.6rem); letter-spacing: 0.16em; color: var(--bone); line-height: 1.05; }
+  .nameplate__name--alt { color: var(--copper-bright); }
+  .nameplate__sub { display: block; margin-top: 1rem; letter-spacing: 0.3em; font-size: 0.66rem; }
+
+  .rec { max-width: 70ch; }
+  .rec__h { font-size: var(--step-2); margin: 0.8rem 0 1.2rem; }
+  .rec__p { color: var(--text-dim); font-size: var(--step-1); margin-bottom: 2rem; }
+  .rec__p strong { color: var(--bone); }
+
+  @media (max-width: 760px) {
+    .lc { grid-template-columns: 1fr; }
+    .lc:nth-child(even) .lc__media { order: 0; }
+    .lc__meta { grid-template-columns: 1fr; }
+  }
+</style>

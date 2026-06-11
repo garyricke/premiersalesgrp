@@ -1,0 +1,245 @@
+---
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import { SITE } from '../consts';
+
+const palette = [
+  { name: 'Charcoal', hex: '#161618', role: 'Primary canvas', cls: 'sw--charcoal', text: 'light' },
+  { name: 'Ink', hex: '#0B0F14', role: 'Depth / footer / inputs', cls: 'sw--ink', text: 'light' },
+  { name: 'Copper', hex: '#C8772E', role: 'Primary accent · CTAs', cls: 'sw--copper', text: 'dark' },
+  { name: 'Copper Bright', hex: '#E0903F', role: 'Highlights · links · hover', cls: 'sw--copperb', text: 'dark' },
+  { name: 'Bone', hex: '#F4F1EC', role: 'Primary text on dark', cls: 'sw--bone', text: 'dark' },
+  { name: 'Graphite', hex: '#26262A', role: 'Cards · elevation', cls: 'sw--graphite', text: 'light' },
+];
+
+const type = [
+  { font: 'Fraunces', role: 'Display · headlines', sample: 'Premier Sales Group', cls: 'sp--fraunces', note: 'High-contrast serif. Refined, premium, human. Weights 400–600, optical sizing on.' },
+  { font: 'Archivo', role: 'Labels · eyebrows · UI', sample: 'WIRE & CABLE REPRESENTATION', cls: 'sp--archivo', note: 'Industrial grotesk. Uppercase, tracked +0.18em for structure and signage feel.' },
+  { font: 'Hanken Grotesk', role: 'Body copy', sample: 'The trusted link between American wire makers and the buyers who need them.', cls: 'sp--hanken', note: 'Warm, legible workhorse for paragraphs and long reading.' },
+  { font: 'Spline Sans Mono', role: 'Technical · specs · meta', sample: '12 AWG · THHN/THWN-2 · 600V', cls: 'sp--mono', note: 'Monospace for part numbers, gauges, and data — reinforces the manufacturing world.' },
+];
+
+const directions = [
+  { name: 'Electric Modern', desc: 'Deep navy + electric blue. Futuristic and clean.', chosen: false, sw: ['#0A1A2F', '#1E6FFF', '#F5F7FA'] },
+  { name: 'Industrial Premium', desc: 'Charcoal + copper. Material, grounded, premium.', chosen: true, sw: ['#161618', '#C8772E', '#F4F1EC'] },
+  { name: 'Heritage Trust', desc: 'Slate blue + brass. Classic, corporate, established.', chosen: false, sw: ['#16314F', '#B08D57', '#FFFFFF'] },
+];
+
+const voice = [
+  { we: 'Straight-talking', not: 'Corporate jargon', ex: '“Send me what you’re buying. I’ll sharpen the pencil.”' },
+  { we: 'Confident, not boastful', not: 'Salesy hype', ex: '“I quote fast, I follow through.”' },
+  { we: 'Grounded in the trade', not: 'Abstract marketing', ex: '“I grew up around spools, specs, and shop floors.”' },
+  { we: 'Personal', not: 'Faceless brand', ex: '“When you call me, you get me.”' },
+];
+---
+
+<Base
+  title="Brand Guide"
+  description="The Premier Sales Group brand system — positioning, logo, color, typography, and voice. Industrial Premium: charcoal, copper, and refined type."
+  path="/brand"
+>
+  <!-- Intro -->
+  <section class="section bg-hero">
+    <div class="wrap">
+      <p class="eyebrow">Brand Guide · v1.0</p>
+      <h1 class="bg-title">A brand built like the product:<br /><span class="serif-accent text-copper">solid, premium, made to last.</span></h1>
+      <p class="bg-lede">
+        Premier Sales Group enters a category of forgettable, template websites. This system
+        is the opposite — material, confident, and unmistakably premium. It’s the brand
+        equivalent of showing up to the meeting sharp.
+      </p>
+    </div>
+  </section>
+
+  <!-- Positioning -->
+  <section class="section section--line">
+    <div class="wrap pos">
+      <div>
+        <p class="eyebrow">Positioning</p>
+        <h2 class="pos__h">The new-generation rep who makes buyers’ lives easier.</h2>
+      </div>
+      <dl class="pos__grid">
+        <div><dt>Essence</dt><dd>Premium representation, personal service.</dd></div>
+        <div><dt>Audience</dt><dd>OEM buyers, purchasing managers, and contract manufacturers sourcing wire &amp; cable.</dd></div>
+        <div><dt>Personality</dt><dd>Grounded · sharp · trustworthy · modern · a little bold.</dd></div>
+        <div><dt>Promise</dt><dd>{SITE.tagline}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Logo -->
+  <section class="section section--line">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Logo</p><h2>The ascending peak.</h2>
+        <p>Two layered conductor strokes climb to a peak — “premier,” a rising signal, and stranded cable in one mark. It works in copper on dark, or reversed.</p>
+      </div>
+      <div class="logo-show">
+        <div class="logo-show__main"><Logo /></div>
+        <div class="logo-show__alt"><div class="logo-show__mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 35 L24 11 L43 35" fill="none" stroke="var(--copper)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 37 L24 23 L35 37" fill="none" stroke="var(--copper-bright)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/><circle cx="24" cy="40.5" r="2.4" fill="var(--copper-bright)"/></svg></div><span class="mono">Mark only — favicon, avatar, stamp</span></div>
+      </div>
+      <div class="dos">
+        <div class="do"><span class="do__y">Do</span><ul><li>Keep clear space equal to the mark height.</li><li>Use copper on charcoal as the default.</li><li>Reverse to charcoal on bone for print.</li></ul></div>
+        <div class="do"><span class="do__n">Don’t</span><ul><li>Recolor outside the copper / bone palette.</li><li>Stretch, rotate, or add effects.</li><li>Place on busy imagery without a scrim.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color -->
+  <section class="section section--line">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Color</p><h2>Charcoal, copper, and breathing room.</h2>
+        <p>Copper is the wire itself — used sparingly, it carries every accent. The dark canvas does the heavy lifting.</p>
+      </div>
+      <div class="swatches">
+        {palette.map((c) => (
+          <div class={`swatch ${c.cls}`} data-text={c.text}>
+            <span class="swatch__name">{c.name}</span>
+            <span class="swatch__meta"><span class="mono">{c.hex}</span><span>{c.role}</span></span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Type -->
+  <section class="section section--line">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Typography</p><h2>A serif for class, a grotesk for grit.</h2>
+        <p>Fraunces brings the premium, editorial feel; Archivo and a mono add the industrial backbone.</p>
+      </div>
+      <div class="specimens">
+        {type.map((t) => (
+          <div class="spec">
+            <div class="spec__head"><span class="spec__font">{t.font}</span><span class="mono">{t.role}</span></div>
+            <p class={`spec__sample ${t.cls}`}>{t.sample}</p>
+            <p class="spec__note">{t.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Voice -->
+  <section class="section section--line">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Voice &amp; Tone</p><h2>Sound like Jason. Not like a brochure.</h2></div>
+      <div class="voice">
+        {voice.map((v) => (
+          <div class="voice__row">
+            <div class="voice__we"><span class="mono">We are</span><strong>{v.we}</strong></div>
+            <div class="voice__not"><span class="mono">Not</span>{v.not}</div>
+            <p class="voice__ex">{v.ex}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Imagery -->
+  <section class="section section--line">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Imagery &amp; Motif</p><h2>Macro copper, deep shadow, real material.</h2>
+        <p>Photography leans into extreme close-ups of stranded copper and cable against near-black backgrounds — luxurious, tactile, never stocky. Negative space on the left for type.</p>
+      </div>
+      <ul class="motif">
+        <li>Extreme macro of copper strands &amp; cable</li>
+        <li>Near-black backdrops, single warm light source</li>
+        <li>Shallow depth of field, editorial framing</li>
+        <li>Copper as the only saturated color</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Directions considered -->
+  <section class="section section--line">
+    <div class="wrap">
+      <div class="section-head"><p class="eyebrow">Directions Considered</p><h2>Three routes explored. One chosen.</h2>
+        <p>Industrial Premium won for standing apart from the blue-heavy, lookalike competitor set — and for owning copper, the literal material of the business.</p>
+      </div>
+      <div class="dirs">
+        {directions.map((d) => (
+          <div class={`dir ${d.chosen ? 'dir--chosen' : ''}`}>
+            {d.chosen && <span class="dir__badge">Selected</span>}
+            <div class="dir__sw">{d.sw.map((s) => (<span style={`background:${s}`}></span>))}</div>
+            <h3>{d.name}</h3>
+            <p>{d.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .bg-hero { padding-top: clamp(3rem, 8vw, 6rem); }
+  .bg-title { font-size: var(--step-4); margin: 1.4rem 0; font-weight: 400; }
+  .bg-lede { max-width: 60ch; color: var(--text-dim); font-size: var(--step-1); }
+
+  .pos { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(2rem, 5vw, 4rem); }
+  .pos__h { font-size: var(--step-2); max-width: 16ch; }
+  .pos__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem 2rem; }
+  .pos__grid dt { font-family: var(--font-grotesk); font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; color: var(--copper-bright); margin-bottom: 0.5rem; }
+  .pos__grid dd { color: var(--text-dim); }
+  @media (max-width: 760px) { .pos { grid-template-columns: 1fr; } .pos__grid { grid-template-columns: 1fr; } }
+
+  .logo-show { display: grid; grid-template-columns: 2fr 1fr; gap: 1.2rem; margin-bottom: 2rem; }
+  .logo-show__main, .logo-show__alt { background: var(--ink); border: 1px solid var(--line); border-radius: var(--radius-lg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: clamp(2.5rem, 6vw, 4.5rem); min-height: 200px; }
+  .logo-show__main :global(.logo__mark) { width: 3rem; height: 3rem; }
+  .logo-show__main :global(.logo__name) { font-size: 1.4rem; }
+  .logo-show__mark svg { width: 4rem; height: 4rem; }
+  .logo-show__alt .mono { font-size: 0.72rem; text-align: center; }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .do { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 1.6rem; }
+  .do__y, .do__n { font-family: var(--font-grotesk); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.78rem; display: inline-block; margin-bottom: 1rem; }
+  .do__y { color: #7fb98a; } .do__n { color: #d4756a; }
+  .do ul { display: flex; flex-direction: column; gap: 0.6rem; color: var(--text-dim); }
+  .do li { padding-left: 1.1rem; position: relative; }
+  .do li::before { content: '—'; position: absolute; left: 0; color: var(--text-mute); }
+  @media (max-width: 700px) { .logo-show, .dos { grid-template-columns: 1fr; } }
+
+  .swatches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .swatch { border-radius: var(--radius-lg); border: 1px solid var(--line); padding: 1.4rem; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; }
+  .swatch[data-text='light'] { color: var(--bone); } .swatch[data-text='dark'] { color: var(--ink); }
+  .swatch__name { font-family: var(--font-display); font-size: 1.3rem; }
+  .swatch__meta { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.82rem; }
+  .swatch__meta .mono { color: inherit; opacity: 0.85; }
+  .sw--charcoal { background: #161618; } .sw--ink { background: #0B0F14; } .sw--copper { background: #C8772E; }
+  .sw--copperb { background: #E0903F; } .sw--bone { background: #F4F1EC; } .sw--graphite { background: #26262A; }
+  @media (max-width: 700px) { .swatches { grid-template-columns: 1fr 1fr; } }
+
+  .specimens { display: grid; gap: 1rem; }
+  .spec { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(1.4rem, 3vw, 2rem); background: linear-gradient(180deg, rgba(244,241,236,0.025), transparent); }
+  .spec__head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .spec__font { font-family: var(--font-grotesk); font-weight: 700; letter-spacing: 0.04em; color: var(--bone); }
+  .spec__sample { color: var(--bone); margin-bottom: 0.8rem; line-height: 1.1; }
+  .sp--fraunces { font-family: var(--font-display); font-size: var(--step-3); }
+  .sp--archivo { font-family: var(--font-grotesk); font-weight: 700; letter-spacing: 0.18em; font-size: var(--step-1); color: var(--copper-bright); }
+  .sp--hanken { font-family: var(--font-body); font-size: var(--step-1); line-height: 1.5; }
+  .sp--mono { font-family: var(--font-mono); font-size: var(--step-1); color: var(--copper-bright); }
+  .spec__note { color: var(--text-mute); font-size: 0.92rem; }
+
+  .voice { display: flex; flex-direction: column; }
+  .voice__row { display: grid; grid-template-columns: 1fr 1fr 1.4fr; gap: 1.5rem; padding: 1.4rem 0; border-top: 1px solid var(--line); align-items: center; }
+  .voice__row:last-child { border-bottom: 1px solid var(--line); }
+  .voice__we { display: flex; flex-direction: column; gap: 0.3rem; }
+  .voice__we .mono, .voice__not .mono { font-size: 0.72rem; }
+  .voice__we strong { color: var(--bone); font-size: 1.1rem; }
+  .voice__not { color: var(--text-mute); display: flex; flex-direction: column; gap: 0.3rem; }
+  .voice__ex { font-family: var(--font-display); font-style: italic; color: var(--copper-bright); }
+  @media (max-width: 760px) { .voice__row { grid-template-columns: 1fr; gap: 0.5rem; } }
+
+  .motif { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; max-width: 760px; }
+  .motif li { display: flex; align-items: center; gap: 0.7rem; color: var(--text-dim); padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: var(--radius); }
+  .motif li::before { content: '◆'; color: var(--copper); font-size: 0.7rem; }
+  @media (max-width: 600px) { .motif { grid-template-columns: 1fr; } }
+
+  .dirs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .dir { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 1.8rem; position: relative; }
+  .dir--chosen { border-color: var(--copper); box-shadow: 0 0 0 1px var(--copper), 0 20px 50px -30px rgba(200,119,46,0.6); }
+  .dir__badge { position: absolute; top: 1.2rem; right: 1.2rem; font-family: var(--font-grotesk); font-weight: 700; font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); background: var(--copper); padding: 0.3em 0.6em; border-radius: 100px; }
+  .dir__sw { display: flex; gap: 0; border-radius: var(--radius); overflow: hidden; margin-bottom: 1.2rem; height: 48px; border: 1px solid var(--line); }
+  .dir__sw span { flex: 1; }
+  .dir h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  .dir p { color: var(--text-dim); font-size: 0.95rem; }
+  @media (max-width: 760px) { .dirs { grid-template-columns: 1fr; } }
+</style>

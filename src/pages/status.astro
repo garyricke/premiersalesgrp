@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+
+/* Day-by-day build log. Add the newest day to the TOP of this array. */
+const log = [
+  {
+    date: '2026-06-11',
+    label: 'Day 1 — Brand & first build',
+    summary:
+      'Kicked off the Premier Sales Group brand and website. Locked the creative direction, produced the core visuals, and shipped the first full build of the site.',
+    items: [
+      { tag: 'Brand', text: 'Chose the “Industrial Premium” direction — charcoal canvas, copper accent, Fraunces + Archivo type. Documented the full system on the Brand Guide page.' },
+      { tag: 'Logo', text: 'Explored four logo directions with Gemini 3 Pro and OpenAI. Selected “The Ascending Peak” as the working mark and built it as clean SVG.' },
+      { tag: 'Visuals', text: 'Retouched Jason’s headshot — removed the collar pin and rebuilt it as a studio-grade portrait on a charcoal backdrop. Generated the macro copper-cable hero image.' },
+      { tag: 'Build', text: 'Scaffolded the site on Astro with a reusable design system, header/footer, and SEO/AEO layout (JSON-LD for Organization, Person, WebSite, and FAQPage).' },
+      { tag: 'Pages', text: 'Shipped the landing page, brand guide, logo concepts, this status log, and a contact thank-you page.' },
+      { tag: 'Infra', text: 'Wired up Netlify config + Netlify Forms for the quote request form. All imagery delivered through Cloudinary with f_auto/q_auto optimization.' },
+    ],
+  },
+];
+
+const statusMeta = [
+  { k: 'Stage', v: 'First build — internal review' },
+  { k: 'Framework', v: 'Astro · static' },
+  { k: 'Hosting', v: 'Netlify' },
+  { k: 'Media', v: 'Cloudinary' },
+];
+---
+
+<Base
+  title="Status Log"
+  description="Day-by-day build log for the Premier Sales Group website — what changed, when, and what's next."
+  path="/status"
+  noindex={true}
+>
+  <section class="section st-hero">
+    <div class="wrap">
+      <p class="eyebrow">Status Log</p>
+      <h1 class="st-title">What changed, day by day.</h1>
+      <p class="st-lede">
+        A running record of every update to the Premier Sales Group brand and site —
+        so progress is always transparent. Newest first.
+      </p>
+      <div class="st-meta">
+        {statusMeta.map((m) => (
+          <div class="st-meta__item">
+            <span class="mono">{m.k}</span>
+            <strong>{m.v}</strong>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section--line">
+    <div class="wrap st-timeline">
+      {log.map((day) => (
+        <article class="day">
+          <div class="day__rail" aria-hidden="true"><span class="day__dot"></span></div>
+          <div class="day__content">
+            <header class="day__head">
+              <time class="day__date mono" datetime={day.date}>{day.date}</time>
+              <h2 class="day__label">{day.label}</h2>
+              <p class="day__summary">{day.summary}</p>
+            </header>
+            <ul class="day__items">
+              {day.items.map((it) => (
+                <li class="entry">
+                  <span class="entry__tag">{it.tag}</span>
+                  <p>{it.text}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="wrap next">
+      <p class="eyebrow">Up Next</p>
+      <h2 class="next__h">On the runway.</h2>
+      <ul class="next__list">
+        <li>Jason’s review &amp; feedback on copy, logo direction, and photography.</li>
+        <li>Connect the GitHub repo and deploy to Netlify on the live domain.</li>
+        <li>Add Jason’s real LinkedIn URL and any additional headshots.</li>
+        <li>Phase 2: the 100-account outreach campaign — personalized landing pages, email, and postcards.</li>
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .st-hero { padding-top: clamp(3rem, 8vw, 6rem); }
+  .st-title { font-size: var(--step-4); margin: 1.4rem 0; font-weight: 400; }
+  .st-lede { max-width: 56ch; color: var(--text-dim); font-size: var(--step-1); }
+  .st-meta { display: flex; flex-wrap: wrap; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 2.5rem; }
+  .st-meta__item { background: var(--charcoal); padding: 1rem 1.4rem; display: flex; flex-direction: column; gap: 0.3rem; flex: 1; min-width: 140px; }
+  .st-meta__item strong { color: var(--bone); font-family: var(--font-grotesk); font-size: 0.95rem; }
+
+  .st-timeline { display: flex; flex-direction: column; gap: 2.5rem; }
+  .day { display: grid; grid-template-columns: 32px 1fr; gap: 1.5rem; }
+  .day__rail { position: relative; display: flex; justify-content: center; }
+  .day__rail::before { content: ''; position: absolute; top: 6px; bottom: -2.5rem; width: 1px; background: var(--line); }
+  .day:last-child .day__rail::before { display: none; }
+  .day__dot { width: 14px; height: 14px; border-radius: 50%; background: var(--copper); box-shadow: 0 0 0 4px rgba(200,119,46,0.16); margin-top: 4px; z-index: 1; }
+  .day__date { color: var(--copper-bright); }
+  .day__label { font-size: var(--step-2); margin: 0.4rem 0 0.8rem; }
+  .day__summary { color: var(--text-dim); max-width: 64ch; margin-bottom: 1.8rem; }
+  .day__items { display: flex; flex-direction: column; gap: 0.8rem; }
+  .entry { display: grid; grid-template-columns: 96px 1fr; gap: 1rem; align-items: start; padding: 1rem 1.2rem; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(180deg, rgba(244,241,236,0.025), transparent); }
+  .entry__tag { font-family: var(--font-grotesk); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.66rem; color: var(--copper-bright); padding-top: 0.2rem; }
+  .entry p { color: var(--text-dim); font-size: 0.96rem; }
+
+  .next { max-width: 70ch; }
+  .next__h { font-size: var(--step-2); margin: 0.8rem 0 1.4rem; }
+  .next__list { display: flex; flex-direction: column; gap: 0.9rem; }
+  .next__list li { display: flex; gap: 0.8rem; color: var(--text-dim); padding-left: 1.4rem; position: relative; }
+  .next__list li::before { content: '→'; position: absolute; left: 0; color: var(--copper); }
+
+  @media (max-width: 560px) {
+    .entry { grid-template-columns: 1fr; gap: 0.4rem; }
+    .day { gap: 1rem; }
+  }
+</style>
