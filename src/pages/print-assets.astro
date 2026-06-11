@@ -1,0 +1,507 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, PERSON, MEDIA, cld, badgePng } from '../consts';
+
+const badge = badgePng(240);
+const heroFront = cld(MEDIA.heroCable, 'w_1200');
+
+// Outreach email templates (placeholders in [brackets] for Jason to fill in).
+const templates = [
+  {
+    id: 'winback',
+    name: 'Win-back',
+    when: 'A lapsed account that used to buy from Unified.',
+    subject: 'Bringing [Company] back to Unified Wire & Cable',
+    body: [
+      'Hi [First name],',
+      'I’m Jason Foley — I recently took over the Unified Wire & Cable relationship for accounts like [Company], and I noticed we used to do good business together.',
+      'A lot has changed on our end: sharper pricing, shorter lead times, and a single point of contact (me) who actually answers the phone.',
+      'I’d love the chance to re-quote a few of the items you’re buying today and show you where we land — even just one line. Send it over and I’ll turn it around fast.',
+      'Would it be worth a quick look?',
+      'Best,\nJason',
+    ],
+  },
+  {
+    id: 'intro',
+    name: 'New introduction',
+    when: 'A new contact or referral you haven’t worked with yet.',
+    subject: 'A faster way through your wire & cable quotes',
+    body: [
+      'Hi [First name],',
+      'My name is Jason Foley, President of Premier Sales Group. I represent Unified Wire & Cable — a U.S. manufacturer of THHN building wire, machine-tool wire, bare copper, and custom constructions.',
+      'I work as a single point of contact for buyers like you: you send me what you’re running, I come back with a clean, competitive quote, and I stay on it through delivery.',
+      'If you’re open to it, send me one or two part numbers you buy regularly and I’ll show you what we can do — no obligation.',
+      'Appreciate your time,\nJason',
+    ],
+  },
+  {
+    id: 'followup',
+    name: 'Quote follow-up',
+    when: 'After you’ve sent a quote and want to nudge a decision.',
+    subject: 'Re: your Unified Wire & Cable quote',
+    body: [
+      'Hi [First name],',
+      'Just circling back on the quote I sent over for [Product]. Wanted to make sure it landed and see if you had any questions on pricing, lead time, or specs.',
+      'If the numbers work, I can get the order moving right away. If we’re close but not quite there, tell me where I need to be and I’ll see what I can do.',
+      'Either way, I appreciate the look.',
+      'Thanks,\nJason',
+    ],
+  },
+];
+---
+
+<Base
+  title="Print & Outreach Assets"
+  description="Copy-paste email signature, outreach email templates, business cards, postcards, letterhead, and sell sheets for Premier Sales Group."
+  path="/print-assets"
+  noindex={true}
+>
+  <!-- Intro -->
+  <section class="section pa-hero">
+    <div class="wrap">
+      <p class="eyebrow">Print &amp; Outreach Assets</p>
+      <h1 class="pa-title">Everything Jason needs<br /><span class="serif-accent text-copper">to reach out and look sharp.</span></h1>
+      <p class="pa-lede">
+        A working kit for the outreach campaign — a copy-paste email signature, ready-to-send
+        email templates, and branded print pieces. The digital items copy with one click;
+        the print pieces are design-ready and can be produced as print files on request.
+      </p>
+      <nav class="pa-jump" aria-label="On this page">
+        <a href="#signature">Email signature</a>
+        <a href="#emails">Email templates</a>
+        <a href="#cards">Business cards</a>
+        <a href="#postcard">Postcard</a>
+        <a href="#letterhead">Letterhead</a>
+        <a href="#sellsheet">Sell sheet</a>
+        <a href="#linkedin">LinkedIn banner</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ===================== EMAIL SIGNATURE ===================== -->
+  <section class="section section--line" id="signature">
+    <div class="wrap">
+      <div class="pa-head">
+        <div>
+          <p class="eyebrow">Email Signature</p>
+          <h2>Copy once. Paste into Gmail or Outlook.</h2>
+          <p class="pa-sub">Click copy, then paste into your email signature settings — formatting and logo come with it.</p>
+        </div>
+        <button class="btn copy-btn" data-copy-target="#email-signature" data-copy-mode="rich">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10" stroke-linecap="round"/></svg>
+          <span class="copy-label">Copy signature</span>
+        </button>
+      </div>
+
+      <div class="email-canvas">
+        <!-- This exact node is what gets copied -->
+        <table id="email-signature" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#1a1a1a;">
+          <tr>
+            <td style="padding:2px 18px 2px 0;border-right:2px solid #C8772E;vertical-align:middle;">
+              <img src={badge} width="62" height="62" alt="Premier Sales Group" style="display:block;border:0;outline:none;text-decoration:none;" />
+            </td>
+            <td style="padding:0 0 0 18px;vertical-align:middle;">
+              <div style="font-size:17px;font-weight:bold;color:#1a1a1a;line-height:1.2;">Jason Foley</div>
+              <div style="font-size:11px;font-weight:bold;color:#C8772E;letter-spacing:0.6px;text-transform:uppercase;padding-top:2px;">President &middot; Premier Sales Group</div>
+              <div style="font-size:13px;color:#444444;line-height:1.6;padding-top:8px;">
+                <a href={`tel:${PERSON.phone}`} style="color:#1a1a1a;text-decoration:none;">{PERSON.phoneDisplay}</a>
+                <span style="color:#cccccc;">&nbsp;|&nbsp;</span>
+                <a href={`mailto:${PERSON.email}`} style="color:#1a1a1a;text-decoration:none;">{PERSON.email}</a>
+              </div>
+              <div style="font-size:13px;line-height:1.6;">
+                <a href="https://premiersalesgrp.com" style="color:#C8772E;text-decoration:none;font-weight:bold;">premiersalesgrp.com</a>
+              </div>
+              <div style="font-size:11px;color:#999999;padding-top:8px;">
+                Representing <a href="https://unifiedwire.com" style="color:#999999;text-decoration:underline;">Unified Wire &amp; Cable</a>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p class="pa-note mono">Tip: in Gmail go to Settings → General → Signature → paste. In Outlook, Settings → Mail → Compose and reply.</p>
+    </div>
+  </section>
+
+  <!-- ===================== EMAIL TEMPLATES ===================== -->
+  <section class="section section--line" id="emails">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Outreach Email Templates</p>
+        <h2>Three emails, ready to send.</h2>
+        <p>Fill in the <span class="text-copper">[brackets]</span>, copy the body, and go. Built from the win-back approach for the 100-account campaign.</p>
+      </div>
+
+      <div class="tpl-grid">
+        {templates.map((t) => (
+          <article class="tpl">
+            <div class="tpl__bar">
+              <span class="tag">{t.name}</span>
+              <span class="mono tpl__when">{t.when}</span>
+            </div>
+            <div class="tpl__window">
+              <div class="tpl__subject">
+                <span class="mono tpl__label">Subject</span>
+                <span class="tpl__subject-text" id={`subj-${t.id}`}>{t.subject}</span>
+                <button class="copy-mini" data-copy-target={`#subj-${t.id}`} data-copy-mode="text" aria-label="Copy subject">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+              <div class="tpl__body" id={`body-${t.id}`}>
+                {t.body.map((p) => <p>{p}</p>)}
+              </div>
+            </div>
+            <button class="btn btn--ghost copy-btn tpl__copy" data-copy-target={`#body-${t.id}`} data-copy-mode="text">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10" stroke-linecap="round"/></svg>
+              <span class="copy-label">Copy body</span>
+            </button>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BUSINESS CARDS ===================== -->
+  <section class="section section--line" id="cards">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Business Cards</p>
+        <h2>The card he hands across the table.</h2>
+        <p>Double-sided, 3.5&Prime; × 2&Prime;. Matte stock with a copper foil option on the mark.</p>
+      </div>
+      <div class="cards">
+        <!-- Front -->
+        <figure class="bizcard bizcard--front">
+          <div class="bizcard__mark">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 35 L24 11 L43 35" fill="none" stroke="#c8772e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 37 L24 23 L35 37" fill="none" stroke="#e0903f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/><circle cx="24" cy="40.5" r="2.4" fill="#e0903f"/></svg>
+          </div>
+          <div class="bizcard__name">Jason Foley</div>
+          <div class="bizcard__role">President</div>
+          <div class="bizcard__brand">Premier Sales Group</div>
+          <figcaption class="bizcard__cap mono">Front</figcaption>
+        </figure>
+        <!-- Back -->
+        <figure class="bizcard bizcard--back">
+          <div class="bizcard__wordmark">PREMIER<br/>SALES GROUP</div>
+          <div class="bizcard__rule"></div>
+          <ul class="bizcard__contact">
+            <li>{PERSON.phoneDisplay}</li>
+            <li>{PERSON.email}</li>
+            <li>premiersalesgrp.com</li>
+          </ul>
+          <div class="bizcard__rep mono">Representing Unified Wire &amp; Cable</div>
+          <figcaption class="bizcard__cap mono">Back</figcaption>
+        </figure>
+      </div>
+      <p class="pa-note mono">Spec: 3.5 × 2 in · 0.125 in bleed · CMYK + copper spot · 16pt matte · print-ready PDF on request.</p>
+    </div>
+  </section>
+
+  <!-- ===================== POSTCARD ===================== -->
+  <section class="section section--line" id="postcard">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Win-back Postcard</p>
+        <h2>The touch that lands on the desk, not the inbox.</h2>
+        <p>A second touchpoint for accounts that don’t answer email. 6&Prime; × 4.25&Prime;, mailable.</p>
+      </div>
+      <div class="postcards">
+        <figure class="postcard postcard--front" style={`background-image:linear-gradient(90deg, rgba(11,15,20,0.96) 38%, rgba(11,15,20,0.45) 70%, rgba(11,15,20,0.2)), url('${heroFront}')`}>
+          <p class="postcard__eyebrow mono">Premier Sales Group</p>
+          <p class="postcard__head">Let’s get <span class="text-copper">[Company]</span> buying again.</p>
+          <p class="postcard__sub">Sharper pricing. Shorter lead times. One person who picks up the phone.</p>
+          <figcaption class="postcard__cap mono">Front</figcaption>
+        </figure>
+        <figure class="postcard postcard--back">
+          <div class="postcard__msg">
+            <p class="postcard__mhead">Hi [First name],</p>
+            <p>We used to do good business together. I’d love to re-quote what you’re buying today and earn it back. Scan or call — I’ll turn it around fast.</p>
+            <p class="postcard__sign serif-accent">Jason Foley</p>
+            <p class="mono postcard__cta">{PERSON.phoneDisplay} · premiersalesgrp.com</p>
+          </div>
+          <div class="postcard__stamp" aria-hidden="true">
+            <div class="postcard__qr"></div>
+            <div class="postcard__addr"></div>
+            <div class="postcard__addr postcard__addr--short"></div>
+            <div class="postcard__addr postcard__addr--short"></div>
+          </div>
+          <figcaption class="postcard__cap mono">Back</figcaption>
+        </figure>
+      </div>
+      <p class="pa-note mono">Spec: 6 × 4.25 in · USPS-mailable · full-bleed copper imagery · QR to a personalized landing page.</p>
+    </div>
+  </section>
+
+  <!-- ===================== LETTERHEAD + SELL SHEET ===================== -->
+  <section class="section section--line" id="letterhead">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Letterhead &amp; Quote Cover</p>
+        <h2>For quotes that look as good as the work.</h2>
+        <p>The header your quotes and letters sit on. 8.5&Prime; × 11&Prime;.</p>
+      </div>
+      <div class="sheets">
+        <figure class="sheet">
+          <header class="sheet__hd">
+            <span class="sheet__logo">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 35 L24 11 L43 35" fill="none" stroke="#c8772e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 37 L24 23 L35 37" fill="none" stroke="#e0903f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/></svg>
+              <b>Premier Sales Group</b>
+            </span>
+            <span class="mono sheet__hd-contact">{PERSON.phoneDisplay}<br/>premiersalesgrp.com</span>
+          </header>
+          <div class="sheet__body">
+            <span class="sheet__doc mono">QUOTATION</span>
+            <div class="sheet__line" style="width:62%"></div>
+            <div class="sheet__line" style="width:40%"></div>
+            <div class="sheet__gap"></div>
+            <div class="sheet__line" style="width:90%"></div>
+            <div class="sheet__line" style="width:84%"></div>
+            <div class="sheet__line" style="width:88%"></div>
+            <div class="sheet__line" style="width:55%"></div>
+          </div>
+          <footer class="sheet__ft mono">Premier Sales Group · Representing Unified Wire &amp; Cable · {PERSON.phoneDisplay}</footer>
+          <figcaption class="bizcard__cap mono">Letterhead</figcaption>
+        </figure>
+
+        <figure class="sheet sheet--sell" id="sellsheet">
+          <header class="sheet__hd sheet__hd--dark">
+            <span class="sheet__logo sheet__logo--light">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 35 L24 11 L43 35" fill="none" stroke="#c8772e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 37 L24 23 L35 37" fill="none" stroke="#e0903f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/></svg>
+              <b>Premier Sales Group</b>
+            </span>
+            <span class="mono sheet__doc--light">LINE CARD</span>
+          </header>
+          <div class="sheet__sell-body">
+            <p class="sheet__sell-h">Unified Wire &amp; Cable</p>
+            <p class="sheet__sell-p">A U.S. manufacturer of electrical wire &amp; cable, represented by Premier Sales Group.</p>
+            <ul class="sheet__sell-grid">
+              <li>THHN / THWN-2</li>
+              <li>Machine-tool wire</li>
+              <li>Bare copper</li>
+              <li>Hook-up &amp; lead wire</li>
+              <li>Appliance wire</li>
+              <li>Custom builds</li>
+            </ul>
+            <div class="sheet__sell-cta mono">Request a quote · {PERSON.phoneDisplay}</div>
+          </div>
+          <figcaption class="bizcard__cap mono">Sell sheet / Line card</figcaption>
+        </figure>
+      </div>
+      <p class="pa-note mono">Spec: 8.5 × 11 in · PDF + editable template · matched to the quote format buyers already trust.</p>
+    </div>
+  </section>
+
+  <!-- ===================== LINKEDIN BANNER ===================== -->
+  <section class="section section--line" id="linkedin">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">LinkedIn Banner</p>
+        <h2>So his profile matches his pitch.</h2>
+        <p>The first thing a prospect sees when they look him up. 1584 × 396 px.</p>
+      </div>
+      <figure class="banner" style={`background-image:linear-gradient(90deg, rgba(11,15,20,0.97) 42%, rgba(11,15,20,0.5) 72%, rgba(11,15,20,0.25)), url('${heroFront}')`}>
+        <div class="banner__inner">
+          <span class="banner__logo">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 35 L24 11 L43 35" fill="none" stroke="#c8772e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 37 L24 23 L35 37" fill="none" stroke="#e0903f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/></svg>
+            <b>Premier Sales Group</b>
+          </span>
+          <p class="banner__tag">{SITE.tagline}</p>
+          <p class="mono banner__sub">Representing Unified Wire &amp; Cable · {PERSON.phoneDisplay}</p>
+        </div>
+      </figure>
+      <p class="pa-note mono">Spec: 1584 × 396 px · also resizable for an email banner or trade-show table runner.</p>
+    </div>
+  </section>
+</Base>
+
+<!-- toast -->
+<div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
+<style>
+  .pa-hero { padding-top: clamp(3rem, 8vw, 6rem); }
+  .pa-title { font-size: var(--step-4); margin: 1.4rem 0; font-weight: 400; }
+  .pa-lede { max-width: 62ch; color: var(--text-dim); font-size: var(--step-1); }
+  .pa-jump { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+  .pa-jump a { font-family: var(--font-grotesk); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--line); border-radius: 100px; padding: 0.5em 1em; transition: all 0.2s var(--ease); }
+  .pa-jump a:hover { color: var(--copper-bright); border-color: var(--copper); }
+
+  .pa-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .pa-head h2 { font-size: var(--step-2); margin-top: 0.5rem; }
+  .pa-sub { color: var(--text-dim); margin-top: 0.6rem; max-width: 48ch; }
+  .pa-note { color: var(--text-mute); margin-top: 1.4rem; }
+
+  /* copy buttons */
+  .copy-btn .copy-label { display: inline-block; min-width: 7.5ch; text-align: left; }
+  .copy-btn.copied { background: #7fb98a; border-color: #7fb98a; color: var(--ink); }
+  .btn--ghost.copy-btn.copied { background: rgba(127,185,138,0.15); color: #9ed3a6; }
+  .copy-mini { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 5px; border: 1px solid var(--line); background: transparent; color: var(--text-mute); transition: all 0.2s var(--ease); flex: none; }
+  .copy-mini:hover { color: var(--copper-bright); border-color: var(--copper); }
+  .copy-mini.copied { color: #9ed3a6; border-color: #7fb98a; }
+  .copy-mini svg { width: 14px; height: 14px; }
+
+  /* email signature preview */
+  .email-canvas { background: #ffffff; border-radius: var(--radius-lg); padding: clamp(1.6rem, 4vw, 2.6rem); border: 1px solid var(--line); }
+
+  /* email templates */
+  .tpl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .tpl { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; background: var(--charcoal-2); }
+  .tpl__bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); }
+  .tpl__when { font-size: 0.68rem; color: var(--text-mute); text-align: right; }
+  .tpl__window { background: #fbfaf8; color: #23211d; padding: 1.2rem; flex: 1; }
+  .tpl__subject { display: flex; align-items: center; gap: 0.5rem; padding-bottom: 0.9rem; margin-bottom: 0.9rem; border-bottom: 1px solid #e7e3db; }
+  .tpl__label { font-size: 0.6rem; color: #a59f93; text-transform: uppercase; letter-spacing: 0.1em; flex: none; }
+  .tpl__subject-text { font-weight: 600; font-size: 0.86rem; flex: 1; line-height: 1.3; }
+  .tpl__body { font-size: 0.82rem; line-height: 1.55; }
+  .tpl__body :global(p) { margin-bottom: 0.7rem; white-space: pre-line; }
+  .tpl__body :global(p:last-child) { margin-bottom: 0; }
+  .tpl__copy { margin: 1rem 1.2rem 1.2rem; justify-content: center; }
+
+  /* business cards */
+  .cards, .postcards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 3vw, 2rem); }
+  .bizcard { position: relative; aspect-ratio: 3.5 / 2; border-radius: 10px; padding: clamp(1.1rem, 3vw, 1.8rem); display: flex; flex-direction: column; justify-content: center; box-shadow: 0 30px 60px -35px rgba(0,0,0,0.8); overflow: hidden; }
+  .bizcard__cap, .postcard__cap { position: absolute; top: 0.7rem; right: 0.9rem; font-size: 0.6rem; color: currentColor; opacity: 0.5; letter-spacing: 0.1em; text-transform: uppercase; }
+  .bizcard--front { background: #f4f1ec; color: #1a1a1a; }
+  .bizcard__mark svg { width: 2.4rem; height: 2.4rem; margin-bottom: auto; }
+  .bizcard--front .bizcard__mark { position: absolute; top: clamp(1.1rem,3vw,1.8rem); }
+  .bizcard__name { font-family: var(--font-display); font-size: clamp(1.2rem, 3.5vw, 1.7rem); margin-top: auto; }
+  .bizcard__role { font-family: var(--font-grotesk); font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.64rem; color: var(--copper-deep); margin-top: 0.2rem; }
+  .bizcard__brand { font-family: var(--font-grotesk); font-weight: 600; font-size: 0.8rem; color: #6b6b6b; margin-top: 0.7rem; }
+  .bizcard--back { background: #161618; color: var(--bone); }
+  .bizcard__wordmark { font-family: var(--font-grotesk); font-weight: 800; letter-spacing: 0.14em; line-height: 1.15; font-size: clamp(1rem, 3vw, 1.45rem); color: var(--bone); }
+  .bizcard__rule { width: 38px; height: 3px; background: var(--copper); margin: 0.9rem 0; }
+  .bizcard__contact { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.78rem; color: var(--bone-dim); font-family: var(--font-mono); }
+  .bizcard__rep { position: absolute; bottom: clamp(1.1rem,3vw,1.8rem); font-size: 0.6rem; color: var(--copper-bright); letter-spacing: 0.08em; }
+
+  /* postcards */
+  .postcard { position: relative; aspect-ratio: 6 / 4.25; border-radius: 10px; overflow: hidden; box-shadow: 0 30px 60px -35px rgba(0,0,0,0.8); background-size: cover; background-position: center; }
+  .postcard--front { padding: clamp(1.2rem, 3vw, 2rem); display: flex; flex-direction: column; justify-content: center; color: var(--bone); }
+  .postcard__eyebrow { color: var(--copper-bright); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.62rem; }
+  .postcard__head { font-family: var(--font-display); font-size: clamp(1.3rem, 4.2vw, 2.1rem); line-height: 1.05; margin-top: 0.6rem; max-width: 14ch; }
+  .postcard__sub { color: var(--bone-dim); font-size: 0.82rem; margin-top: 0.8rem; max-width: 26ch; }
+  .postcard--back { background: #faf8f4; color: #23211d; padding: clamp(1.2rem, 3vw, 1.8rem); display: grid; grid-template-columns: 1.5fr 1fr; gap: 1rem; }
+  .postcard__mhead { font-weight: 700; margin-bottom: 0.5rem; }
+  .postcard__msg { font-size: 0.8rem; line-height: 1.5; }
+  .postcard__msg p { margin-bottom: 0.5rem; }
+  .postcard__sign { font-size: 1.4rem; color: #1a1a1a; margin: 0.4rem 0 0.2rem; }
+  .postcard__cta { color: #8a8377; font-size: 0.66rem; }
+  .postcard__stamp { border-left: 2px dashed #d8d2c6; padding-left: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .postcard__qr { width: 42px; height: 42px; border-radius: 6px; background: repeating-conic-gradient(#23211d 0 25%, #faf8f4 0 50%) 0 0 / 10px 10px; margin-left: auto; }
+  .postcard__addr { height: 9px; border-radius: 4px; background: #e7e1d6; margin-top: auto; }
+  .postcard__addr--short { width: 70%; margin-top: 0; }
+
+  /* sheets */
+  .sheets { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 3vw, 2rem); }
+  .sheet { position: relative; aspect-ratio: 8.5 / 11; background: #f4f1ec; border-radius: 6px; overflow: hidden; box-shadow: 0 30px 60px -35px rgba(0,0,0,0.8); display: flex; flex-direction: column; color: #23211d; }
+  .sheet__hd { display: flex; justify-content: space-between; align-items: center; padding: clamp(1rem,2.5vw,1.6rem); border-bottom: 2px solid var(--copper); }
+  .sheet__logo { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-grotesk); font-size: 0.82rem; }
+  .sheet__logo svg { width: 1.5rem; height: 1.5rem; }
+  .sheet__hd-contact { font-size: 0.56rem; text-align: right; color: #6b6b6b; line-height: 1.4; }
+  .sheet__body { padding: clamp(1rem,2.5vw,1.8rem); flex: 1; }
+  .sheet__doc { font-size: 0.7rem; letter-spacing: 0.18em; color: var(--copper-deep); font-weight: 500; }
+  .sheet__line { height: 7px; background: #ded8cc; border-radius: 4px; margin-top: 0.7rem; }
+  .sheet__gap { height: 1.2rem; }
+  .sheet__ft { padding: 0.8rem clamp(1rem,2.5vw,1.6rem); border-top: 1px solid #ded8cc; font-size: 0.52rem; color: #8a8377; }
+  /* sell sheet variant */
+  .sheet--sell { background: #faf8f4; }
+  .sheet__hd--dark { background: #161618; border-bottom-color: var(--copper); }
+  .sheet__logo--light { color: var(--bone); }
+  .sheet__doc--light { color: var(--copper-bright); font-size: 0.62rem; letter-spacing: 0.18em; }
+  .sheet__sell-body { padding: clamp(1.1rem,2.5vw,1.8rem); flex: 1; }
+  .sheet__sell-h { font-family: var(--font-display); font-size: clamp(1.1rem,3vw,1.5rem); }
+  .sheet__sell-p { font-size: 0.74rem; color: #6b6b6b; margin: 0.5rem 0 1rem; line-height: 1.5; }
+  .sheet__sell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 0.8rem; }
+  .sheet__sell-grid li { font-size: 0.74rem; padding-left: 0.9rem; position: relative; color: #23211d; }
+  .sheet__sell-grid li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; background: var(--copper); border-radius: 50%; }
+  .sheet__sell-cta { margin-top: 1.2rem; font-size: 0.6rem; color: var(--copper-deep); letter-spacing: 0.06em; border-top: 1px solid #e7e1d6; padding-top: 0.8rem; }
+
+  /* linkedin banner */
+  .banner { aspect-ratio: 1584 / 396; border-radius: 10px; overflow: hidden; background-size: cover; background-position: center; box-shadow: 0 30px 60px -35px rgba(0,0,0,0.8); display: flex; align-items: center; }
+  .banner__inner { padding: clamp(1.2rem, 4vw, 3rem); }
+  .banner__logo { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-grotesk); font-weight: 700; color: var(--bone); font-size: clamp(0.85rem, 2.4vw, 1.2rem); }
+  .banner__logo svg { width: clamp(1.6rem, 4vw, 2.2rem); height: clamp(1.6rem, 4vw, 2.2rem); }
+  .banner__tag { font-family: var(--font-display); font-size: clamp(1rem, 3.4vw, 2rem); color: var(--bone); margin-top: 0.6rem; max-width: 22ch; line-height: 1.1; }
+  .banner__sub { color: var(--copper-bright); font-size: clamp(0.6rem, 1.6vw, 0.8rem); margin-top: 0.7rem; }
+
+  /* toast */
+  .toast { position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%) translateY(120%); background: var(--copper); color: var(--ink); padding: 0.8em 1.4em; border-radius: 100px; font-weight: 500; box-shadow: 0 16px 40px -16px rgba(0,0,0,0.7); transition: transform 0.4s var(--ease); z-index: 200; pointer-events: none; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 860px) { .tpl-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 700px) { .cards, .postcards, .sheets { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  const toast = document.getElementById('toast');
+  let toastTimer: number | undefined;
+  function showToast(msg: string) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => toast.classList.remove('show'), 1900);
+  }
+
+  function flash(btn: HTMLElement, ok: boolean) {
+    const label = btn.querySelector('.copy-label');
+    btn.classList.add('copied');
+    const original = label?.textContent;
+    if (label) label.textContent = ok ? 'Copied!' : 'Press ⌘C';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      if (label && original) label.textContent = original;
+    }, 1800);
+  }
+
+  async function copyRich(node: HTMLElement): Promise<boolean> {
+    // Selecting the node + execCommand gives the best rich paste into email clients.
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    const sel = window.getSelection();
+    sel?.removeAllRanges();
+    sel?.addRange(range);
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch { ok = false; }
+    sel?.removeAllRanges();
+    if (!ok && navigator.clipboard && 'write' in navigator.clipboard && 'ClipboardItem' in window) {
+      try {
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            'text/html': new Blob([node.outerHTML], { type: 'text/html' }),
+            'text/plain': new Blob([node.innerText], { type: 'text/plain' }),
+          }),
+        ]);
+        ok = true;
+      } catch { ok = false; }
+    }
+    return ok;
+  }
+
+  async function copyText(node: HTMLElement): Promise<boolean> {
+    const text = (node.innerText || '').trim();
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch { ok = false; }
+      ta.remove();
+      return ok;
+    }
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-copy-target]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const target = document.querySelector<HTMLElement>(btn.dataset.copyTarget || '');
+      if (!target) return;
+      const mode = btn.dataset.copyMode || 'text';
+      const ok = mode === 'rich' ? await copyRich(target) : await copyText(target);
+      flash(btn, ok);
+      showToast(ok ? 'Copied to clipboard' : 'Copy failed — select and press ⌘C');
+    });
+  });
+</script>

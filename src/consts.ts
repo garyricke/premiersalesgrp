@@ -52,7 +52,13 @@ export const MEDIA = {
   logoMonogram: 'logo-concept-monogram',
   logoPeak: 'logo-concept-peak',
   logoLink: 'logo-concept-link',
+  logoBadge: 'logo-badge',
 } as const;
+
+/** Rasterized PNG of the peak badge (for email signatures — email can't render SVG). */
+export function badgePng(size = 240): string {
+  return `${CLD_BASE}/f_png,w_${size},h_${size},c_fit/${CLD_FOLDER}/${MEDIA.logoBadge}.png`;
+}
 
 /* Social / Open Graph share image: hero crop + branded overlay via Cloudinary. */
 export const OG_IMAGE = `${CLD_BASE}/f_auto,q_auto,w_1200,h_630,c_fill,g_east/l_text:Arial_64_bold:Premier%20Sales%20Group,co_rgb:F4F1EC,g_west,x_80,y_-30/l_text:Arial_30:Wire%20%26%20Cable%20Representation,co_rgb:C8772E,g_west,x_82,y_40/${CLD_FOLDER}/${MEDIA.heroCable}.jpg`;
@@ -68,6 +74,7 @@ export const NAV = [
 export const FOOTER_NAV = [
   { label: 'Brand Guide', href: '/brand' },
   { label: 'Logo Concepts', href: '/logo-concepts' },
+  { label: 'Print & Outreach', href: '/print-assets' },
   { label: 'Status Log', href: '/status' },
 ] as const;
 
