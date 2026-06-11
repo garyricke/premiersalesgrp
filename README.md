@@ -64,11 +64,12 @@ npm run preview    # serve the production build
 
 ## Private preview (password gate)
 
-The site is gated behind HTTP Basic Auth via a Netlify Edge Function
-(`netlify/edge-functions/auth.js`) — it runs server-side on every request, so
-page source isn't viewable until you're in.
+The site is gated behind a simple, branded password page via a Netlify Edge
+Function (`netlify/edge-functions/auth.js`) — it runs server-side on every
+request, so page source isn't viewable until you're in. On success it sets a
+14-day cookie.
 
-- **Login:** any username · password `imwired`
+- **Login:** enter password `imwired` (single field, no username)
 - Override the password in **Netlify → Site settings → Environment variables**
   as `SITE_PASSWORD` (keeps the real password out of this public repo).
 - The gate only applies on Netlify (not `astro dev`). To test locally:
