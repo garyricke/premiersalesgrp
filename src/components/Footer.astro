@@ -9,6 +9,7 @@ const year = new Date().getFullYear();
     <div class="ftr__top">
       <div class="ftr__brand">
         <Logo />
+        <p class="ftr__slogan serif-accent">“{SITE.slogan}”</p>
         <p class="ftr__tag">{SITE.tagline}</p>
         <a href="https://unifiedwire.com" target="_blank" rel="noopener" class="mono ftr__line">
           Proudly representing Unified Wire &amp; Cable ↗
@@ -49,7 +50,8 @@ const year = new Date().getFullYear();
 <style>
   .ftr { border-top: 1px solid var(--line); padding-block: clamp(3rem, 6vw, 5rem) 2rem; background: var(--ink); }
   .ftr__top { display: grid; grid-template-columns: 1.2fr 2fr; gap: clamp(2rem, 5vw, 4rem); }
-  .ftr__tag { color: var(--text-dim); max-width: 34ch; margin-top: 1.2rem; font-size: 1.02rem; }
+  .ftr__slogan { color: var(--copper-bright); font-size: 1.5rem; margin-top: 1.2rem; line-height: 1.1; }
+  .ftr__tag { color: var(--text-dim); max-width: 34ch; margin-top: 0.6rem; font-size: 1.02rem; }
   .ftr__line { display: inline-block; margin-top: 1.2rem; color: var(--copper-bright); }
   .ftr__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .ftr__h {

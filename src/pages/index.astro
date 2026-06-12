@@ -104,6 +104,7 @@ const stats = [
         The trusted link between American wire makers
         <span class="serif-accent text-copper">&amp; the buyers</span> who need them.
       </h1>
+      <p class="hero__slogan serif-accent">“{SITE.slogan}”</p>
       <p class="hero__lede">
         Premier Sales Group is the independent rep firm of <strong>{PERSON.name}</strong> —
         representing <a href={unified.site} target="_blank" rel="noopener" class="hero__ul">Unified Wire &amp; Cable</a>,
@@ -171,6 +172,7 @@ const stats = [
             work today: direct, responsive, and easy to deal with.
           </p>
         </div>
+        <p class="about__slogan serif-accent">“{SITE.slogan}”</p>
         <div class="about__sign">
           <Signature />
           <a href={PERSON.linkedin} target="_blank" rel="noopener" class="link-arrow">
@@ -362,7 +364,8 @@ const stats = [
   .hero__inner { padding-block: clamp(5rem, 12vh, 8rem); }
   .hero__eyebrow { margin-bottom: 1.6rem; }
   .hero__title { font-size: var(--step-5); max-width: 17ch; font-weight: 400; }
-  .hero__lede { margin-top: 1.6rem; max-width: 46ch; font-size: var(--step-1); color: var(--text-dim); }
+  .hero__slogan { margin-top: 1.4rem; font-size: clamp(1.4rem, 3.2vw, 2.1rem); color: var(--copper-bright); line-height: 1.05; }
+  .hero__lede { margin-top: 1rem; max-width: 46ch; font-size: var(--step-1); color: var(--text-dim); }
   .hero__lede strong { color: var(--bone); font-weight: 600; }
   .hero__ul { color: var(--copper-bright); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(200,119,46,0.5); }
   .hero__cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.4rem; }
@@ -397,7 +400,8 @@ const stats = [
   .about__title { font-size: var(--step-3); margin: 0.7rem 0 1.4rem; max-width: 18ch; }
   .about__copy p { color: var(--text-dim); margin-bottom: 1rem; }
   .about__copy a { color: var(--copper-bright); text-decoration: underline; text-underline-offset: 2px; }
-  .about__sign { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 1.6rem; }
+  .about__slogan { font-size: clamp(1.5rem, 3.5vw, 2.1rem); color: var(--copper-bright); margin-top: 1.8rem; line-height: 1.1; }
+  .about__sign { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 1.2rem; }
   .about__sign .serif-accent { font-size: 1.7rem; color: var(--bone); }
   @media (max-width: 820px) { .about { grid-template-columns: 1fr; } .about__media { max-width: 380px; } }
 

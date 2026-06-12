@@ -111,6 +111,7 @@ const templates = [
               <div style="font-size:13px;line-height:1.6;">
                 <a href="https://premiersalesgrp.com" style="color:#C8772E;text-decoration:none;font-weight:bold;">premiersalesgrp.com</a>
               </div>
+              <div style="font-size:12px;font-style:italic;color:#C8772E;padding-top:7px;">I&rsquo;m wired for this.</div>
               <div style="font-size:11px;color:#999999;padding-top:8px;">
                 Representing <a href="https://unifiedwire.com" style="color:#999999;text-decoration:underline;">Unified Wire &amp; Cable</a>
               </div>
@@ -182,6 +183,7 @@ const templates = [
         <!-- Back -->
         <figure class="bizcard bizcard--back">
           <div class="bizcard__wordmark">PREMIER<br/>SALES GROUP</div>
+          <div class="bizcard__cardslogan serif-accent">“{SITE.slogan}”</div>
           <div class="bizcard__rule"></div>
           <ul class="bizcard__contact">
             <li>{PERSON.phoneDisplay}</li>
@@ -209,6 +211,7 @@ const templates = [
           <p class="postcard__eyebrow mono">Premier Sales Group</p>
           <p class="postcard__head">Let’s get <span class="text-copper">[Company]</span> buying again.</p>
           <p class="postcard__sub">Sharper pricing. Shorter lead times. One person who picks up the phone.</p>
+          <p class="postcard__slogan serif-accent">“{SITE.slogan}”</p>
           <figcaption class="postcard__cap mono">Front</figcaption>
         </figure>
         <figure class="postcard postcard--back">
@@ -281,6 +284,7 @@ const templates = [
               <li>Appliance wire</li>
               <li>Custom builds</li>
             </ul>
+            <p class="sheet__sell-slogan serif-accent">“{SITE.slogan}”</p>
             <div class="sheet__sell-cta mono">Request a quote · {PERSON.phoneDisplay}</div>
           </div>
           <figcaption class="bizcard__cap mono">Sell sheet / Line card</figcaption>
@@ -304,8 +308,8 @@ const templates = [
             <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 35 L24 11 L43 35" fill="none" stroke="#c8772e" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 37 L24 23 L35 37" fill="none" stroke="#e0903f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/></svg>
             <b>Premier Sales Group</b>
           </span>
-          <p class="banner__tag">{SITE.tagline}</p>
-          <p class="mono banner__sub">Representing Unified Wire &amp; Cable · {PERSON.phoneDisplay}</p>
+          <p class="banner__tag">“{SITE.slogan}”</p>
+          <p class="mono banner__sub">{SITE.tagline.replace('.', '')} · {PERSON.phoneDisplay}</p>
         </div>
       </figure>
       <p class="pa-note mono">Spec: 1584 × 396 px · also resizable for an email banner or trade-show table runner.</p>
@@ -367,6 +371,7 @@ const templates = [
   .bizcard__brand { font-family: var(--font-grotesk); font-weight: 600; font-size: 0.8rem; color: #6b6b6b; margin-top: 0.7rem; }
   .bizcard--back { background: #161618; color: var(--bone); }
   .bizcard__wordmark { font-family: var(--font-grotesk); font-weight: 800; letter-spacing: 0.14em; line-height: 1.15; font-size: clamp(1rem, 3vw, 1.45rem); color: var(--bone); }
+  .bizcard__cardslogan { color: var(--copper-bright); font-size: clamp(0.85rem, 2.4vw, 1.15rem); margin-top: 0.5rem; line-height: 1.1; }
   .bizcard__rule { width: 38px; height: 3px; background: var(--copper); margin: 0.9rem 0; }
   .bizcard__contact { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.78rem; color: var(--bone-dim); font-family: var(--font-mono); }
   .bizcard__rep { position: absolute; bottom: clamp(1.1rem,3vw,1.8rem); font-size: 0.6rem; color: var(--copper-bright); letter-spacing: 0.08em; }
@@ -377,6 +382,7 @@ const templates = [
   .postcard__eyebrow { color: var(--copper-bright); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.62rem; }
   .postcard__head { font-family: var(--font-display); font-size: clamp(1.3rem, 4.2vw, 2.1rem); line-height: 1.05; margin-top: 0.6rem; max-width: 14ch; }
   .postcard__sub { color: var(--bone-dim); font-size: 0.82rem; margin-top: 0.8rem; max-width: 26ch; }
+  .postcard__slogan { color: var(--copper-bright); font-size: clamp(1rem, 3vw, 1.5rem); margin-top: 0.8rem; line-height: 1.05; }
   .postcard--back { background: #faf8f4; color: #23211d; padding: clamp(1.2rem, 3vw, 1.8rem); display: grid; grid-template-columns: 1.5fr 1fr; gap: 1rem; }
   .postcard__mhead { font-weight: 700; margin-bottom: 0.5rem; }
   .postcard__msg { font-size: 0.8rem; line-height: 1.5; }
@@ -411,7 +417,8 @@ const templates = [
   .sheet__sell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 0.8rem; }
   .sheet__sell-grid li { font-size: 0.74rem; padding-left: 0.9rem; position: relative; color: #23211d; }
   .sheet__sell-grid li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 5px; height: 5px; background: var(--copper); border-radius: 50%; }
-  .sheet__sell-cta { margin-top: 1.2rem; font-size: 0.6rem; color: var(--copper-deep); letter-spacing: 0.06em; border-top: 1px solid #e7e1d6; padding-top: 0.8rem; }
+  .sheet__sell-slogan { color: var(--copper-deep); font-size: clamp(0.95rem, 2.6vw, 1.3rem); margin-top: 1.1rem; line-height: 1.1; }
+  .sheet__sell-cta { margin-top: 0.8rem; font-size: 0.6rem; color: var(--copper-deep); letter-spacing: 0.06em; border-top: 1px solid #e7e1d6; padding-top: 0.8rem; }
 
   /* linkedin banner */
   .banner { aspect-ratio: 1584 / 396; border-radius: 10px; overflow: hidden; background-size: cover; background-position: center; box-shadow: 0 30px 60px -35px rgba(0,0,0,0.8); display: flex; align-items: center; }

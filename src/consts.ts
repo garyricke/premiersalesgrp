@@ -10,6 +10,7 @@ export const SITE = {
   url: 'https://premiersalesgrp.com',
   domain: 'premiersalesgrp.com',
   tagline: 'The link between American wire manufacturers and the buyers who need them.',
+  slogan: "I'm wired for this.",
   description:
     "Premier Sales Group is the independent manufacturers' representative firm led by Jason Foley, representing Unified Wire & Cable. Specialists in electrical wire & cable sourcing, competitive quoting, and account relationships.",
   founded: '2026',
@@ -53,6 +54,9 @@ export const MEDIA = {
   logoPeak: 'logo-concept-peak',
   logoLink: 'logo-concept-link',
   logoBadge: 'logo-badge',
+  storySpool: 'story-spool',
+  storyArchival: 'story-archival',
+  storyBroll: 'story-broll',
 } as const;
 
 /** Rasterized PNG of the peak badge (for email signatures — email can't render SVG). */
@@ -75,6 +79,7 @@ export const FOOTER_NAV = [
   { label: 'Brand Guide', href: '/brand' },
   { label: 'Logo Concepts', href: '/logo-concepts' },
   { label: 'Print & Outreach', href: '/print-assets' },
+  { label: 'Video Concept', href: '/video-concept' },
   { label: 'Status Log', href: '/status' },
 ] as const;
 

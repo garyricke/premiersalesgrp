@@ -105,7 +105,7 @@ function loginPage(error) {
       <div class="err">${error ? 'Incorrect password. Try again.' : ''}</div>
       <button type="submit">Enter</button>
     </form>
-    <div class="foot">By invitation</div>
+    <div class="foot">I'm wired for this.</div>
   </main>
 </body>
 </html>`;
