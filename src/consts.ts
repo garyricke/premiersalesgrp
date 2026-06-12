@@ -54,7 +54,7 @@ export const MEDIA = {
   logoPeak: 'logo-concept-peak',
   logoLink: 'logo-concept-link',
   logoBadge: 'logo-badge',
-  storySpool: 'story-spool',
+  storySpool: 'story-spool-jason',
   storyArchival: 'story-archival',
   storyBroll: 'story-broll',
 } as const;
